@@ -46,7 +46,15 @@ Simple static site boilerplate with SASS and ES6 support.
 
 ## Deploy to `gh-pages`
 
-1. Enable GitHub Pages with `gh-pages` branch as source into repository settings (read more [here](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-github-pages#publishing-sources-for-github-pages-sites)).
+1. Create and empty branch named as `gh-pages` to push on it the site when building process ends:
 
-2. Every push to `master` or `main` branches runs the [`gh-pages`]('.github/workflows/gh-pages.yml') action that builds the site running `npm build` script, and pushes the folder result (`dist/`) into `gh-pages` branch to make it public.
+```
+    $ > git branch gh-pages && \ 
+    git checkout gh-pages && \
+    git commit --allow-empty -m "initial gh-pages commit" && \
+    git push origin gh-pages
+```
 
+2. Enable GitHub Pages with `gh-pages` branch as source into repository settings (read more [here](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-github-pages#publishing-sources-for-github-pages-sites)).
+
+3. Every push to `master` or `main` branches runs the [`gh-pages`]('.github/workflows/gh-pages.yml') action that builds the site running `npm build` script, and pushes the folder result (`dist/`) into `gh-pages` branch to make it public.
