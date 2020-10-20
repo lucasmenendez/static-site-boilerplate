@@ -14,8 +14,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Build site
-        run: npm ci
-        run: npm run build 
+        run: npm ci && npm run build 
 
       - name: Publish generated content to GitHub Pages
         uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
