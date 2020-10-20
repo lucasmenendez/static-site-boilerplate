@@ -17,8 +17,9 @@ jobs:
       - run: npm run build 
 
       - name: Publish generated content to GitHub Pages
-        uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          dir: dist
-          branch: gh-pages
-          token: ${{ secrets.ACCESS_TOKEN }}
+          FOLDER: dist
+          BRANCH: gh-pages
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          CLEAN: true
