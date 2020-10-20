@@ -1,0 +1,25 @@
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v1
+
+      - name: Build site
+        run: npm ci
+        run: npm run build 
+
+      - name: Publish generated content to GitHub Pages
+        uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+        with:
+          dir: dist
+          branch: gh-pages
+          token: ${{ secrets.ACCESS_TOKEN }}

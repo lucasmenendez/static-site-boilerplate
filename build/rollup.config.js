@@ -1,7 +1,7 @@
-
 import fs from "fs";
 import scss from "rollup-plugin-scss"
 import babel from "@rollup/plugin-babel";
+import copy from "rollup-plugin-copy";
 import { terser } from "rollup-plugin-terser";
 
 const isProd = process.env.NODE_ENV === "production";
@@ -42,6 +42,11 @@ export default {
         }),
         copyAndWatch("src/index.html", "index.html"),
         babel({ babelHelpers: "bundled" }),
+        copy({
+            targets: [
+                { src: "src/assets/**/*", dest: "dist/assets" }
+            ]
+        }),
         isProd && terser()
     ]
 };
